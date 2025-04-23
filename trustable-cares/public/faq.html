@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frequently Asked Questions - Trustable Cares</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#e74c3c',
+            secondary: '#3498db',
+            dark: '#2c3e50',
+            light: '#ecf0f1',
+            success: '#2ecc71',
+            warning: '#f39c12',
+            danger: '#c0392b'
+          },
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="font-sans bg-gray-50">
+  <!-- Header -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <nav class="flex justify-between items-center py-4">
+        <a href="/" class="text-2xl font-bold text-primary">
+          <i class="fas fa-heartbeat mr-2"></i>Trustable Cares
+        </a>
+        
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="/" class="font-medium hover:text-primary transition-colors">Home</a>
+          <a href="/about.html" class="font-medium hover:text-primary transition-colors">About</a>
+          <a href="/contact.html" class="font-medium hover:text-primary transition-colors">Contact</a>
+          <a href="/faq.html" class="font-medium text-primary">FAQ</a>
+          <div class="flex space-x-2">
+            <a href="/donors/register" class="bg-primary text-white px-4 py-2 rounded hover:bg-red-700 transition-colors">Donate Blood</a>
+            <a href="/recipients/register" class="bg-secondary text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors">Request Blood</a>
+          </div>
+        </div>
+        
+        <button class="md:hidden text-dark text-xl">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="md:hidden bg-white shadow-md hidden" id="mobile-menu">
+    <div class="container mx-auto px-4 py-3">
+      <a href="/" class="block py-2 font-medium hover:text-primary transition-colors">Home</a>
+      <a href="/about.html" class="block py-2 font-medium hover:text-primary transition-colors">About</a>
+      <a href="/contact.html" class="block py-2 font-medium hover:text-primary transition-colors">Contact</a>
+      <a href="/faq.html" class="block py-2 font-medium text-primary">FAQ</a>
+      <div class="flex flex-col space-y-2 mt-3">
+        <a href="/donors/register" class="bg-primary text-white px-4 py-2 rounded text-center hover:bg-red-700 transition-colors">Donate Blood</a>
+        <a href="/recipients/register" class="bg-secondary text-white px-4 py-2 rounded text-center hover:bg-blue-700 transition-colors">Request Blood</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Header -->
+  <section class="bg-primary text-white py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Frequently Asked Questions</h1>
+      <p class="text-xl max-w-3xl mx-auto">Find answers to common questions about blood donation and our platform.</p>
+    </div>
+  </section>
+
+  <!-- Search Section -->
+  <section class="py-8 bg-white shadow-md">
+    <div class="container mx-auto px-4">
+      <div class="max-w-2xl mx-auto">
+        <div class="relative">
+          <input type="text" id="faq-search" placeholder="Search for questions..." class="w-full px-4 py-3 pl-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+          <div class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
+            <i class="fas fa-search"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Categories -->
+  <section class="py-12">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+          <button class="px-6 py-3 bg-primary text-white rounded-full font-medium hover:bg-red-700 transition-colors faq-category active" data-category="all">
+            All Questions
+          </button>
+          <button class="px-6 py-3 bg-gray-200 text-gray-700 rounded-full font-medium hover:bg-gray-300 transition-colors faq-category" data-category="donation">
+            Blood Donation
+          </button>
+          <button class="px-6 py-3 bg-gray-200 text-gray-700 rounded-full font-medium hover:bg-gray-300 transition-colors faq-category" data-category="recipient">
+            Recipients
+          </button>
+          <button class="px-6 py-3 bg-gray-200 text-gray-700 rounded-full font-medium hover:bg-gray-300 transition-colors faq-category" data-category="platform">
+            Platform Usage
+          </button>
+          <button class="px-6 py-3 bg-gray-200 text-gray-700 rounded-full font-medium hover:bg-gray-300 transition-colors faq-category" data-category="general">
+            General
+          </button>
+        </div>
+        
+        <!-- Blood Donation FAQs -->
+        <div class="mb-12" id="donation-faqs">
+          <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200">Blood Donation</h2>
+          
+          <div class="space-y-4">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden faq-item" data-category="donation">
+              <button class="flex justify-between items-center w-full px-6 py-4 text-left font-medium focus:outline-none faq-toggle">
+                <span>Who can donate blood?</span>
+                <i class="fas fa-chevron-down text-primary transition-transform"></i>
+              </button>
+              <div class="px-6 py-4 bg-gray-50 faq-content hidden">
+                <p class="text-gray-600 mb-3">Generally, you can donate blood if you:</p>
+                <ul class="list-disc pl-5 text-gray-600 space-y-1">
+                  <li>Are at least 18 years old</li>
+                  <li>Weigh at least 45 kg</li>
+                  <li>Are in good health</li>
+                  <li>Have hemoglobin levels within acceptable ranges</li>
+                  <li>Haven't donated blood in the last 3 months</li>
+                </ul>
+                <p class="text-gray-600 mt-3">Some medical conditions or medications may disqualify you from donating. It's best to consult with a healthcare professional if you're unsure.</p>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden faq-item" data-category="donation">
+              <button class="flex justify-between items-center w-full px-6 py-4 text-left font-medium focus:outline-none faq-toggle">
+                <span>How often can I donate blood?</span>
+                <i class="fas fa-chevron-down text-primary transition-transform"></i>
+              </button>
+              <div class="px-6 py-4 bg-gray-50 faq-content hidden">
+                <p class="text-gray-600">For whole blood donation, you can donate once every 3 months (or 12 weeks). This waiting period allows your body to replenish the red blood cells lost during donation. For plasma donation, you can donate more frequently, typically every 28 days.</p>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden faq-item" data-category="donation">
+              <button class="flex justify-between items-center w-full px-6 py-4 text-left font-medium focus:outline-none faq-toggle">
+                <span>Is blood donation painful?</span>
+                <i class="fas fa-chevron-down text-primary transition-transform"></i>
+              </button>
+              <div class="px-6 py-4 bg-gray-50 faq-content hidden">
+                <p class="text-gray-600">Most donors report feeling only a brief pinch when the needle is inserted. The actual donation process is usually painless. Some donors might experience mild discomfort or a slight bruise at the needle site afterward, but serious pain is uncommon.</p>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden faq-item" data-category="donation">
+              <button class="flex justify-between items-center w-full px-6 py-4 text-left font-medium focus:outline-none faq-toggle">
+                <span>How should I prepare for blood donation?</span>
+                <i class="fas fa-chevron-down text-primary transition-transform"></i>
+              </button>
+              <div class="px-6 py-4 bg-gray-50 faq-content hidden">
+                <p class="text-gray-600 mb-3">To prepare for blood donation:</p>
+                <ul class="list-disc pl-5 text-gray-600 space-y-1">
+                  <li>Eat a healthy meal within 3 hours before donating</li>
+                  <li>Drink plenty of water before and after donation</li>
+                  <li>Get a good night's sleep</li>
+                  <li>Wear comfortable clothing with sleeves that can be rolled up</li>
+                  <li>Bring a valid ID</li>
+                  <li>Avoid alcohol for 24 hours before donation</li>
+                  <li>Avoid heavy lifting or strenuous exercise for 24 hours after donation</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden faq-item" data-category="donation">
+              <button class="flex justify-between items-center w-full px-6 py-4 text-left font-medium focus:outline-none faq-toggle">
+                <span>What happens during the blood donation process?</span>
+                <i class="fas fa-chevron-down text-primary transition-transform"></i>
+              </button>
+              <div class="px-6 py-4 bg-gray-50 faq-content hidden">
+                <p class="text-gray-600 mb-3">The blood donation process typically involves:</p>
+                <ol class="list-decimal pl-5 text-gray-600 space-y-1">
+                  <li>Registration and ID verification</li>
+                  <li>Brief health screening and medical history review</li>
+                  <li>Mini-physical (checking temperature, blood pressure, pulse, and hemoglobin levels)</li>
+                  <li>The actual donation, which takes about 8-10 minutes</li>
+                  <li>Rest and refreshments for 10-15 minutes after donation</li>
+                </ol>
+                <p class="text-gray-600 mt-3">The entire process usually takes about 1 hour, with the actual blood collection taking only about 10 minutes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Recipients FAQs -->
+        <div class="mb-12" id="recipient-faqs">
+          <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200">For Recipients</h2>
+          
+          <div class="space-y-4">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden faq-item" data-category="recipient">
+              <button class="flex justify-between items-center w-full px-6 py-4 text-left font-medium focus:outline-none faq-toggle">
+                <span>How do I request blood through Trustable Cares?</span>
+                <i class="fas fa-chevron-down text-primary transition-transform"></i>
+              </button>
+              <div class="px-6 py-4 bg-gray-50 faq-content hidden">
+                <p class="text-gray-600 mb-3">To request blood through our platform:</p>
+                <ol class="list-decimal pl-5 text-gray-600 space-y-1">
+                  <li>Register as a recipient on our platform</li>
+                  <li>Log in to your account</li>
+                  <li>Navigate to the "Request Blood" section</li>
+                  <li>Fill out the blood request form with details like blood group, units required, hospital information, and urgency level</li>
+                  <li>Submit your request</li>
+                </ol>
+                <p class="text-gray-600 mt-3">Our system will immediately search for matching donors in your area and provide you with their contact information if matches are found.</p>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden faq-item" data-category="recipient">
+              <button class="flex justify-between items-center w-full px-6 py-4 text-left font-medium focus:outline-none faq-toggle">
+                <span>How quickly can I find a blood donor?</span>
+                <i class="fas fa-chevron-down text-primary transition-transform"></i>
+              </button>
+              <div class="px-6 py-4 bg-gray-50 faq-content hidden">
+                <p class="text-gray-600">The time to find a donor depends on several factors, including your blood type, location, and the number of registered donors in your area. In urban areas with many registered donors, you may find matches immediately. For rare blood types or in areas with fewer donors, it might take longer. For critical cases, we recommend also contacting local blood banks and hospitals while using our platform.</p>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden faq-item" data-category="recipient">
+              <button class="flex justify-between items-center w-full px-6 py-4 text-left font-medium focus:outline-none faq-toggle">
+                <span>What blood groups are compatible with mine?</span>
+                <i class="fas fa-chevron-down text-primary transition-transform"></i>
+              </button>
+              <div class="px-6 py-4 bg-gray-50 faq-content hidden">
+                <p class="text-gray-600 mb-3">Blood type compatibility is as follows:</p>
+                <ul class="list-disc pl-5 text-gray-600 space-y-1">
+                  <li>If you have A+: You can receive from A+, A-, O+, O-</li>
+                  <li>If you have A-: You can receive from A-, O-</li>
+                  <li>If you have B+: You can receive from B+, B-, O+, O-</li>
+                  <li>If you have B-: You can receive from B-, O-</li>
+                  <li>If you have AB+: You can receive from all blood types</li>
+                  <li>If you have AB-: You can receive from A-, B-, AB-, O-</li>
+                  <li>If you have O+: You can receive from O+, O-</li>
+                  <li>If you have O-: You can receive only from O-</li>
+                </ul>
+                <p class="text-gray-600 mt-3">Our system automatically matches you with compatible donors based on your blood type.</p>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden faq-item" data-category="recipient">
+              <button class="flex justify-between items-center w-full px-6 py-4 text-left font-medium focus:outline-none faq-toggle">
+                <span>Is there a fee for using Trustable Cares to find donors?</span>
+                <i class="fas fa-chevron-down text-primary transition-transform"></i>
+              </button>
+              <div class="px-6 py-4 bg-gray-50 faq-content hidden">
+                <p class="text-gray-600">No, Trustable Cares is a free service. We do not charge recipients or donors for using our platform. Our mission is to connect blood donors with recipients in need, and we believe that financial barriers should not prevent anyone from accessing life-saving blood donations.</p>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden faq-item" data-category="recipient">
+              <button class="flex justify-between items-center w-full px-6 py-4 text-left font-medium focus:outline-none faq-toggle">
+                <span>What should I do after finding a matching donor?</span>
+                <i class="fas fa-chevron-down text-primary transition-transform"></i>
+              </button>
+              <div class="px-6 py-4 bg-gray-50 faq-content hidden">
+                <p class="text-gray-600 mb-3">After finding a matching donor:</p>
+                <ol class="list-decimal pl-5 text-gray-600 space-y-1">
+                  <li>Contact the donor using the provided information</li>
+                  <li>Explain your situation and confirm their availability</li>
+                  <li>Provide details about the hospital or blood bank where they should go</li>
+                  <li>Coordinate a suitable time for the donation</li>
+                  <li>Update your request status on our platform once the donation is complete</li>
+                </ol>
+                <p class="text-gray-600 mt-3">Remember to be respectful of the donor's time and express gratitude for their willingness to help.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Platform Usage FAQs -->
+        <div class="mb-12" id="platform-faqs">
+          <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200">Platform Usage</h2>
+          
+          <div class="space-y-4">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden faq-item" data-category="platform">
+              <button class="flex justify-between items-center w-full px-6 py-4 text-left font-medium focus:outline-none faq-toggle">
+                <span>How do I register on Trustable Cares?</span>
+                <i class="fas fa-chevron-down text-primary transition-transform"></i>
+              </button>
+              <div class="px-6 py-4 bg-gray-50 faq-content hidden">
+                <p class="text-gray-600 mb-3">To register on Trustable Cares:</p>
+                <ol class="list-decimal pl-5 text-gray-600 space-y-1">
+                  <li>Visit our website and click on "Register as Donor" or "Register as Recipient" based on your needs</li>
+                  <li>Fill out the registration form with your personal details, contact information, and blood group</li>
+                  <li>For donors, provide additional information like your weight, last donation date, and medical conditions</li>
+                  <li>For recipients, provide information about your hospital and medical needs</li>
+                  <li>Accept the terms and conditions</li>
+                  <li>Submit the form to complete your registration</li>
+                </ol>
+                <p class="text-gray-600 mt-3">Once registered, you can log in to your account to manage your profile, create or respond to blood requests, and track your donation history.</p>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden faq-item" data-category="platform">
+              <button class="flex justify-between items-center w-full px-6 py-4 text-left font-medium focus:outline-none faq-toggle">
+                <span>Is my personal information secure on Trustable Cares?</span>
+                <i class="fas fa-chevron-down text-primary transition-transform"></i>
+              </button>
+              <div class="px-6 py-4 bg-gray-50 faq-content hidden">
+                <p class="text-gray-600">Yes, we take data security and privacy very seriously. Your personal information is encrypted and stored securely. We only share your contact information with recipients when there's a matching blood request. We never sell or share your data with third parties for marketing purposes. You can review our privacy policy for more details on how we protect and use your information.</p>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden faq-item" data-category="platform">
+              <button class="flex justify-between items-center w-full px-6 py-4 text-left font-medium focus:outline-none faq-toggle">
+                <span>How does the matching system work?</span>
+                <i class="fas fa-chevron-down text-primary transition-transform"></i>
+              </button>
+              <div class="px-6 py-4 bg-gray-50 faq-content hidden">
+                <p class="text-gray-600">Our matching system works by comparing the blood group and location (PIN code) of recipients and donors. When a recipient creates a blood request, our system automatically searches for donors with compatible blood types in the same or nearby PIN code areas. The system considers blood type compatibility rules and donor availability status. Matches are then presented to the recipient, who can contact the donors directly. This location-based matching ensures quick access to local donors, which is crucial in emergency situations.</p>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden faq-item" data-category="platform">
+              <button class="flex justify-between items-center w-full px-6 py-4 text-left font-medium focus:outline-none faq-toggle">
+                <span>Can I update my profile information?</span>
+                <i class="fas fa-chevron-down text-primary transition-transform"></i>
+              </button>
+              <div class="px-6 py-4 bg-gray-50 faq-content hidden">
+                <p class="text-gray-600 mb-3">Yes, you can update your profile information at any time. To do so:</p>
+                <ol class="list-decimal pl-5 text-gray-600 space-y-1">
+                  <li>Log in to your account</li>
+                  <li>Navigate to the "Profile" section</li>
+                  <li>Click on "Edit Profile"</li>
+                  <li>Update your information as needed</li>
+                  <li>Save your changes</li>
+                </ol>
+                <p class="text-gray-600 mt-3">It's important to keep your information up-to-date, especially your contact details, location, and availability status (for donors).</p>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden faq-item" data-category="platform">
+              <button class="flex justify-between items-center w-full px-6 py-4 text-left font-medium focus:outline-none faq-toggle">
+                <span>What should I do if I encounter technical issues?</span>
+                <i class="fas fa-chevron-down text-primary transition-transform"></i>
+              </button>
+              <div class="px-6 py-4 bg-gray-50 faq-content hidden">
+                <p class="text-gray-600 mb-3">If you encounter technical issues:</p>
+                <ol class="list-decimal pl-5 text-gray-600 space-y-1">
+                  <li>Try refreshing the page or clearing your browser cache</li>
+                  <li>Ensure you're using a supported browser (Chrome, Firefox, Safari, or Edge)</li>
+                  <li>Check your internet connection</li>
+                  <li>If the issue persists, contact our support team at support@trustablecares.org</li>
+                  <li>Provide details about the issue, including what you were trying to do, any error messages, and screenshots if possible</li>
+                </ol>
+                <p class="text-gray-600 mt-3">Our technical team will respond to your query as soon as possible.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- General FAQs -->
+        <div class="mb-12" id="general-faqs">
+          <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200">General Questions</h2>
+          
+          <div class="space-y-4">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden faq-item" data-category="general">
+              <button class="flex justify-between items-center w-full px-6 py-4 text-left font-medium focus:outline-none faq-toggle">
+                <span>What is Trustable Cares?</span>
+                <i class="fas fa-chevron-down text-primary transition-transform"></i>
+              </button>
+              <div class="px-6 py-4 bg-gray-50 faq-content hidden">
+                <p class="text-gray-600">Trustable Cares is a platform that connects blood donors with recipients in need. We were developed during the COVID-19 pandemic to address the critical shortage of plasma donors for COVID-19 patients. Today, we facilitate blood donations for all medical needs by matching donors and recipients based on blood type compatibility and location proximity. Our mission is to ensure that no one loses their life due to the unavailability of blood.</p>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden faq-item" data-category="general">
+              <button class="flex justify-between items-center w-full px-6 py-4 text-left font-medium focus:outline-none faq-toggle">
+                <span>Is Trustable Cares available nationwide?</span>
+                <i class="fas fa-chevron-down text-primary transition-transform"></i>
+              </button>
+              <div class="px-6 py-4 bg-gray-50 faq-content hidden">
+                <p class="text-gray-600">Yes, Trustable Cares is available across India. Our platform can be accessed from anywhere in the country, and we have donors registered from various cities and regions. However, the availability of donors in specific areas may vary. We're continuously working to expand our donor network to ensure better coverage in all regions.</p>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden faq-item" data-category="general">
+              <button class="flex justify-between items-center w-full px-6 py-4 text-left font-medium focus:outline-none faq-toggle">
+                <span>How can I support Trustable Cares' mission?</span>
+                <i class="fas fa-chevron-down text-primary transition-transform"></i>
+              </button>
+              <div class="px-6 py-4 bg-gray-50 faq-content hidden">
+                <p class="text-gray-600 mb-3">There are several ways you can support our mission:</p>
+                <ul class="list-disc pl-5 text-gray-600 space-y-1">
+                  <li>Register as a blood donor on our platform</li>
+                  <li>Spread awareness about our platform among your friends, family, and social networks</li>
+                  <li>Organize blood donation camps in collaboration with us</li>
+                  <li>Partner with us if you represent a hospital, blood bank, or healthcare organization</li>
+                  <li>Provide feedback to help us improve our services</li>
+                  <li>Share your success stories if you've used our platform</li>
+                </ul>
+                <p class="text-gray-600 mt-3">Every contribution, big or small, helps us save more lives.</p>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden faq-item" data-category="general">
+              <button class="flex justify-between items-center w-full px-6 py-4 text-left font-medium focus:outline-none faq-toggle">
+                <span>Does Trustable Cares work with hospitals and blood banks?</span>
+                <i class="fas fa-chevron-down text-primary transition-transform"></i>
+              </button>
+              <div class="px-6 py-4 bg-gray-50 faq-content hidden">
+                <p class="text-gray-600">Yes, we collaborate with hospitals and blood banks across the country. These partnerships help us ensure a more efficient blood donation process and better support for recipients. Hospitals and blood banks can register on our platform to access our donor network during shortages or emergencies. If you represent a healthcare institution interested in partnering with us, please contact us at partnerships@trustablecares.org.</p>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden faq-item" data-category="general">
+              <button class="flex justify-between items-center w-full px-6 py-4 text-left font-medium focus:outline-none faq-toggle">
+                <span>What impact has Trustable Cares made so far?</span>
+                <i class="fas fa-chevron-down text-primary transition-transform"></i>
+              </button>
+              <div class="px-6 py-4 bg-gray-50 faq-content hidden">
+                <p class="text-gray-600">Since our inception during the COVID-19 pandemic, Trustable Cares has made a significant impact in connecting blood donors with recipients. We've helped save approximately 50 lives during the pandemic alone. To date, we have over 500 registered donors, have facilitated more than 200 successful donations, and have processed over 300 blood requests. Our platform continues to grow, with more donors and recipients joining every day, expanding our ability to save lives across the country.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Still Have Questions -->
+        <div class="bg-gray-50 rounded-lg p-8 text-center">
+          <h2 class="text-2xl font-bold mb-4">Still Have Questions?</h2>
+          <p class="text-gray-600 mb-6">If you couldn't find the answer to your question, feel free to contact us.</p>
+          <a href="/contact.html" class="bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-red-700 transition-colors">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4">Trustable Cares</h3>
+          <p class="text-gray-400 mb-4">Connecting blood donors with recipients to save lives and make a difference in our community.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="/" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+            <li><a href="/about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+            <li><a href="/contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+            <li><a href="/faq.html" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold mb-4">For Donors</h3>
+          <ul class="space-y-2">
+            <li><a href="/donors/register" class="text-gray-400 hover:text-white transition-colors">Register</a></li>
+            <li><a href="/donors/login" class="text-gray-400 hover:text-white transition-colors">Login</a></li>
+            <li><a href="/donors/dashboard" class="text-gray-400 hover:text-white transition-colors">Dashboard</a></li>
+            <li><a href="/donors/profile" class="text-gray-400 hover:text-white transition-colors">Profile</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold mb-4">For Recipients</h3>
+          <ul class="space-y-2">
+            <li><a href="/recipients/register" class="text-gray-400 hover:text-white transition-colors">Register</a></li>
+            <li><a href="/recipients/login" class="text-gray-400 hover:text-white transition-colors">Login</a></li>
+            <li><a href="/recipients/dashboard" class="text-gray-400 hover:text-white transition-colors">Dashboard</a></li>
+            <li><a href="/recipients/request" class="text-gray-400 hover:text-white transition-colors">Request Blood</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+        <p>&copy; 2023 Trustable Cares. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="/js/main.js"></script>
+  <script>
+    // Mobile menu toggle
+    const menuButton = document.querySelector('button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    menuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // FAQ toggles
+    const faqToggles = document.querySelectorAll('.faq-toggle');
+    
+    faqToggles.forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const content = toggle.nextElementSibling;
+        const icon = toggle.querySelector('i');
+        
+        content.classList.toggle('hidden');
+        icon.classList.toggle('rotate-180');
+      });
+    });
+    
+    // FAQ category filtering
+    const categoryButtons = document.querySelectorAll('.faq-category');
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    categoryButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        categoryButtons.forEach(btn => btn.classList.remove('active', 'bg-primary', 'text-white'));
+        categoryButtons.forEach(btn => btn.classList.add('bg-gray-200', 'text-gray-700'));
+        
+        // Add active class to clicked button
+        button.classList.add('active', 'bg-primary', 'text-white');
+        button.classList.remove('bg-gray-200', 'text-gray-700');
+        
+        const category = button.getAttribute('data-category');
+        
+        // Show/hide FAQ items based on category
+        faqItems.forEach(item => {
+          if (category === 'all' || item.getAttribute('data-category') === category) {
+            item.classList.remove('hidden');
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+      });
+    });
+    
+    // FAQ search functionality
+    const searchInput = document.getElementById('faq-search');
+    
+    searchInput.addEventListener('input', () => {
+      const searchTerm = searchInput.value.toLowerCase();
+      
+      faqItems.forEach(item => {
+        const question = item.querySelector('button span').textContent.toLowerCase();
+        const answer = item.querySelector('.faq-content').textContent.toLowerCase();
+        
+        if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
