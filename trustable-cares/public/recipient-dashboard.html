@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipient Dashboard - Trustable Cares</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#e74c3c',
+            secondary: '#3498db',
+            dark: '#2c3e50',
+            light: '#ecf0f1',
+            success: '#2ecc71',
+            warning: '#f39c12',
+            danger: '#c0392b'
+          },
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="font-sans bg-gray-100">
+  <!-- Header -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <nav class="flex justify-between items-center py-4">
+        <a href="/" class="text-2xl font-bold text-primary">
+          <i class="fas fa-heartbeat mr-2"></i>Trustable Cares
+        </a>
+        
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="/" class="font-medium hover:text-primary transition-colors">Home</a>
+          <a href="/about.html" class="font-medium hover:text-primary transition-colors">About</a>
+          <a href="/contact.html" class="font-medium hover:text-primary transition-colors">Contact</a>
+          <a href="/faq.html" class="font-medium hover:text-primary transition-colors">FAQ</a>
+          <div class="relative group">
+            <button class="flex items-center space-x-1 font-medium">
+              <span>My Account</span>
+              <i class="fas fa-chevron-down text-sm"></i>
+            </button>
+            <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden group-hover:block">
+              <a href="/recipients/dashboard" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dashboard</a>
+              <a href="/recipients/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+              <a href="/recipients/request" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Request Blood</a>
+              <div class="border-t border-gray-100"></div>
+              <a href="/recipients/logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
+            </div>
+          </div>
+        </div>
+        
+        <button class="md:hidden text-dark text-xl">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="md:hidden bg-white shadow-md hidden" id="mobile-menu">
+    <div class="container mx-auto px-4 py-3">
+      <a href="/" class="block py-2 font-medium hover:text-primary transition-colors">Home</a>
+      <a href="/about.html" class="block py-2 font-medium hover:text-primary transition-colors">About</a>
+      <a href="/contact.html" class="block py-2 font-medium hover:text-primary transition-colors">Contact</a>
+      <a href="/faq.html" class="block py-2 font-medium hover:text-primary transition-colors">FAQ</a>
+      <div class="border-t border-gray-200 my-2"></div>
+      <a href="/recipients/dashboard" class="block py-2 font-medium hover:text-primary transition-colors">Dashboard</a>
+      <a href="/recipients/profile" class="block py-2 font-medium hover:text-primary transition-colors">Profile</a>
+      <a href="/recipients/request" class="block py-2 font-medium hover:text-primary transition-colors">Request Blood</a>
+      <a href="/recipients/logout" class="block py-2 font-medium hover:text-primary transition-colors">Logout</a>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <div class="container mx-auto px-4 py-8">
+    <div class="flex flex-col md:flex-row">
+      <!-- Sidebar -->
+      <div class="w-full md:w-64 bg-white rounded-lg shadow-md p-6 mb-6 md:mb-0 md:mr-6">
+        <div class="text-center mb-6">
+          <div class="w-24 h-24 rounded-full bg-secondary text-white flex items-center justify-center text-3xl font-bold mx-auto mb-4" id="recipient-avatar">
+            RS
+          </div>
+          <h2 class="text-xl font-bold" id="recipient-name">Rahul Sharma</h2>
+          <p class="text-gray-600" id="recipient-blood-group">B+ Blood Group</p>
+        </div>
+        
+        <ul class="space-y-2">
+          <li>
+            <a href="/recipients/dashboard" class="flex items-center space-x-2 text-secondary font-medium p-2 rounded-md bg-blue-50">
+              <i class="fas fa-tachometer-alt"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="/recipients/profile" class="flex items-center space-x-2 text-gray-700 hover:text-secondary p-2 rounded-md hover:bg-blue-50 transition-colors">
+              <i class="fas fa-user"></i>
+              <span>Profile</span>
+            </a>
+          </li>
+          <li>
+            <a href="/recipients/request" class="flex items-center space-x-2 text-gray-700 hover:text-secondary p-2 rounded-md hover:bg-blue-50 transition-colors">
+              <i class="fas fa-tint"></i>
+              <span>Request Blood</span>
+            </a>
+          </li>
+          <li>
+            <a href="/recipients/notifications" class="flex items-center space-x-2 text-gray-700 hover:text-secondary p-2 rounded-md hover:bg-blue-50 transition-colors">
+              <i class="fas fa-bell"></i>
+              <span>Notifications</span>
+              <span class="ml-auto bg-secondary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">2</span>
+            </a>
+          </li>
+          <li class="border-t border-gray-200 my-2 pt-2">
+            <a href="/recipients/logout" class="flex items-center space-x-2 text-gray-700 hover:text-secondary p-2 rounded-md hover:bg-blue-50 transition-colors">
+              <i class="fas fa-sign-out-alt"></i>
+              <span>Logout</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Main Content -->
+      <div class="flex-1">
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+          <h1 class="text-2xl font-bold mb-4">Recipient Dashboard</h1>
+          <p class="text-gray-600 mb-4">Welcome back, <span id="welcome-name">Rahul</span>! Here's an overview of your blood requests.</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+            <div class="bg-blue-50 rounded-lg p-4 border border-blue-100">
+              <div class="flex items-center">
+                <div class="bg-blue-100 rounded-full p-3 mr-4">
+                  <i class="fas fa-clipboard-list text-blue-500 text-xl"></i>
+                </div>
+                <div>
+                  <p class="text-gray-600">Total Requests</p>
+                  <h3 class="text-xl font-bold text-blue-600" id="total-requests">2</h3>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bg-green-50 rounded-lg p-4 border border-green-100">
+              <div class="flex items-center">
+                <div class="bg-green-100 rounded-full p-3 mr-4">
+                  <i class="fas fa-check-circle text-green-500 text-xl"></i>
+                </div>
+                <div>
+                  <p class="text-gray-600">Fulfilled Requests</p>
+                  <h3 class="text-xl font-bold text-green-600" id="fulfilled-requests">1</h3>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bg-yellow-50 rounded-lg p-4 border border-yellow-100">
+              <div class="flex items-center">
+                <div class="bg-yellow-100 rounded-full p-3 mr-4">
+                  <i class="fas fa-hourglass-half text-yellow-500 text-xl"></i>
+                </div>
+                <div>
+                  <p class="text-gray-600">Pending Requests</p>
+                  <h3 class="text-xl font-bold text-yellow-600" id="pending-requests">1</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Active Blood Requests -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+          <div class="flex justify-between items-center mb-4">
+            <h2 class="text-xl font-bold">Active Blood Requests</h2>
+            <a href="/recipients/request" class="bg-secondary text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">
+              <i class="fas fa-plus mr-2"></i> New Request
+            </a>
+          </div>
+          
+          <div class="overflow-x-auto">
+            <table class="min-w-full bg-white">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                  <th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Blood Group</th>
+                  <th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Units</th>
+                  <th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Hospital</th>
+                  <th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                  <th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200" id="active-requests-table">
+                <tr>
+                  <td class="py-4 px-4 whitespace-nowrap">
+                    <div class="text-sm font-medium text-gray-900">10 Nov 2023</div>
+                    <div class="text-sm text-gray-500">2 days ago</div>
+                  </td>
+                  <td class="py-4 px-4 whitespace-nowrap">
+                    <div class="text-sm font-medium text-gray-900">B+</div>
+                  </td>
+                  <td class="py-4 px-4 whitespace-nowrap">
+                    <div class="text-sm text-gray-900">2 units</div>
+                  </td>
+                  <td class="py-4 px-4 whitespace-nowrap">
+                    <div class="text-sm text-gray-900">City Hospital</div>
+                  </td>
+                  <td class="py-4 px-4 whitespace-nowrap">
+                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                      Pending
+                    </span>
+                  </td>
+                  <td class="py-4 px-4 whitespace-nowrap text-sm font-medium">
+                    <a href="#" class="text-blue-600 hover:text-blue-900 mr-3">View</a>
+                    <a href="#" class="text-red-600 hover:text-red-900">Cancel</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="6" class="py-4 px-4 text-center text-gray-500">
+                    No more active requests.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <!-- Matching Donors -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+          <div class="flex justify-between items-center mb-4">
+            <h2 class="text-xl font-bold">Matching Donors</h2>
+          </div>
+          
+          <div id="matching-donors-container">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="matching-donors-grid">
+              <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start">
+                  <div class="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mr-4">
+                    AS
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-lg">Amit Singh</h3>
+                    <p class="text-gray-600">B+ Blood Group</p>
+                    <p class="text-gray-600">New Delhi, 110001</p>
+                    <p class="text-gray-600">Last Donation: 3 months ago</p>
+                    <div class="mt-2">
+                      <a href="tel:+919876543210" class="inline-flex items-center text-primary hover:text-red-700">
+                        <i class="fas fa-phone-alt mr-1"></i> Contact
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start">
+                  <div class="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mr-4">
+                    PK
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-lg">Priya Kumar</h3>
+                    <p class="text-gray-600">B+ Blood Group</p>
+                    <p class="text-gray-600">New Delhi, 110001</p>
+                    <p class="text-gray-600">Last Donation: 5 months ago</p>
+                    <div class="mt-2">
+                      <a href="tel:+919876543211" class="inline-flex items-center text-primary hover:text-red-700">
+                        <i class="fas fa-phone-alt mr-1"></i> Contact
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Request History -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="flex justify-between items-center mb-4">
+            <h2 class="text-xl font-bold">Request History</h2>
+            <a href="#" class="text-secondary hover:underline text-sm">View All</a>
+          </div>
+          
+          <div class="overflow-x-auto">
+            <table class="min-w-full bg-white">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                  <th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Blood Group</th>
+                  <th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Units</th>
+                  <th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Hospital</th>
+                  <th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                  <th class="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200" id="request-history-table">
+                <tr>
+                  <td class="py-4 px-4 whitespace-nowrap">
+                    <div class="text-sm font-medium text-gray-900">5 Oct 2023</div>
+                    <div class="text-sm text-gray-500">1 month ago</div>
+                  </td>
+                  <td class="py-4 px-4 whitespace-nowrap">
+                    <div class="text-sm font-medium text-gray-900">B+</div>
+                  </td>
+                  <td class="py-4 px-4 whitespace-nowrap">
+                    <div class="text-sm text-gray-900">1 unit</div>
+                  </td>
+                  <td class="py-4 px-4 whitespace-nowrap">
+                    <div class="text-sm text-gray-900">AIIMS</div>
+                  </td>
+                  <td class="py-4 px-4 whitespace-nowrap">
+                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                      Fulfilled
+                    </span>
+                  </td>
+                  <td class="py-4 px-4 whitespace-nowrap text-sm font-medium">
+                    <a href="#" class="text-blue-600 hover:text-blue-900">View</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-4 whitespace-nowrap">
+                    <div class="text-sm font-medium text-gray-900">15 Sep 2023</div>
+                    <div class="text-sm text-gray-500">2 months ago</div>
+                  </td>
+                  <td class="py-4 px-4 whitespace-nowrap">
+                    <div class="text-sm font-medium text-gray-900">B+</div>
+                  </td>
+                  <td class="py-4 px-4 whitespace-nowrap">
+                    <div class="text-sm text-gray-900">2 units</div>
+                  </td>
+                  <td class="py-4 px-4 whitespace-nowrap">
+                    <div class="text-sm text-gray-900">Metro Hospital</div>
+                  </td>
+                  <td class="py-4 px-4 whitespace-nowrap">
+                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                      Cancelled
+                    </span>
+                  </td>
+                  <td class="py-4 px-4 whitespace-nowrap text-sm font-medium">
+                    <a href="#" class="text-blue-600 hover:text-blue-900">View</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-8 mt-12">
+    <div class="container mx-auto px-4">
+      <div class="text-center">
+        <p>&copy; 2023 Trustable Cares. All rights reserved.</p>
+        <div class="flex justify-center space-x-4 mt-4">
+          <a href="#" class="text-gray-400 hover:text-white transition-colors">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white transition-colors">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white transition-colors">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white transition-colors">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="/js/main.js"></script>
+  <script>
+    // Mobile menu toggle
+    const menuButton = document.querySelector('button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    menuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // Fetch recipient data
+    async function fetchRecipientData() {
+      try {
+        const response = await fetch('/api/recipients/profile');
+        const data = await response.json();
+        
+        if (data.success) {
+          const recipient = data.recipient;
+          
+          // Update profile information
+          document.getElementById('recipient-name').textContent = recipient.name;
+          document.getElementById('recipient-blood-group').textContent = `${recipient.bloodGroup} Blood Group`;
+          document.getElementById('welcome-name').textContent = recipient.name.split(' ')[0];
+          
+          // Set avatar initials
+          const nameParts = recipient.name.split(' ');
+          const initials = nameParts.length > 1 
+            ? `${nameParts[0][0]}${nameParts[1][0]}`
+            : nameParts[0].substring(0, 2);
+          document.getElementById('recipient-avatar').textContent = initials.toUpperCase();
+        }
+      } catch (error) {
+        console.error('Error fetching recipient data:', error);
+      }
+    }
+    
+    // Fetch blood requests
+    async function fetchBloodRequests() {
+      try {
+        const response = await fetch('/api/recipients/requests');
+        const data = await response.json();
+        
+        if (data.success) {
+          const requests = data.requests;
+          
+          // Update request counts
+          const totalRequests = requests.length;
+          const fulfilledRequests = requests.filter(req => req.status === 'Fulfilled').length;
+          const pendingRequests = requests.filter(req => req.status === 'Pending' || req.status === 'Matched').length;
+          
+          document.getElementById('total-requests').textContent = totalRequests;
+          document.getElementById('fulfilled-requests').textContent = fulfilledRequests;
+          document.getElementById('pending-requests').textContent = pendingRequests;
+          
+          // Update active requests table
+          const activeRequests = requests.filter(req => req.status === 'Pending' || req.status === 'Matched');
+          const activeRequestsTable = document.getElementById('active-requests-table');
+          
+          if (activeRequests.length > 0) {
+            activeRequestsTable.innerHTML = '';
+            
+            activeRequests.forEach(request => {
+              const row = document.createElement('tr');
+              
+              const requestDate = new Date(request.createdAt);
+              const formattedDate = requestDate.toLocaleDateString('en-US', {
+                day: 'numeric',
+                month: 'short',
+                year: 'numeric'
+              });
+              
+              const now = new Date();
+              const diffTime = Math.abs(now - requestDate);
+              const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+              const timeAgo = diffDays === 0 ? 'Today' : 
+                             diffDays === 1 ? 'Yesterday' : 
+                             `${diffDays} days ago`;
+              
+              row.innerHTML = `
+                <td class="py-4 px-4 whitespace-nowrap">
+                  <div class="text-sm font-medium text-gray-900">${formattedDate}</div>
+                  <div class="text-sm text-gray-500">${timeAgo}</div>
+                </td>
+                <td class="py-4 px-4 whitespace-nowrap">
+                  <div class="text-sm font-medium text-gray-900">${request.bloodGroup}</div>
+                </td>
+                <td class="py-4 px-4 whitespace-nowrap">
+                  <div class="text-sm text-gray-900">${request.unitsRequired} units</div>
+                </td>
+                <td class="py-4 px-4 whitespace-nowrap">
+                  <div class="text-sm text-gray-900">${request.hospital}</div>
+                </td>
+                <td class="py-4 px-4 whitespace-nowrap">
+                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                    request.status === 'Pending' ? 'bg-yellow-100 text-yellow-800' :
+                    request.status === 'Matched' ? 'bg-blue-100 text-blue-800' :
+                    request.status === 'Fulfilled' ? 'bg-green-100 text-green-800' :
+                    'bg-red-100 text-red-800'
+                  }">
+                    ${request.status}
+                  </span>
+                </td>
+                <td class="py-4 px-4 whitespace-nowrap text-sm font-medium">
+                  <a href="/recipients/requests/${request.id}" class="text-blue-600 hover:text-blue-900 mr-3">View</a>
+                  <a href="#" class="text-red-600 hover:text-red-900" data-id="${request.id}">Cancel</a>
+                </td>
+              `;
+              
+              activeRequestsTable.appendChild(row);
+            });
+            
+            // Add event listeners to cancel buttons
+            const cancelButtons = document.querySelectorAll('a[data-id]');
+            cancelButtons.forEach(button => {
+              button.addEventListener('click', async (e) => {
+                e.preventDefault();
+                
+                if (confirm('Are you sure you want to cancel this request?')) {
+                  const requestId = button.getAttribute('data-id');
+                  
+                  try {
+                    const response = await fetch(`/api/requests/${requestId}`, {
+                      method: 'PUT',
+                      headers: {
+                        'Content-Type': 'application/json'
+                      },
+                      body: JSON.stringify({ status: 'Cancelled' })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                      // Refresh the page
+                      window.location.reload();
+                    } else {
+                      alert(data.message || 'Failed to cancel request. Please try again.');
+                    }
+                  } catch (error) {
+                    alert('An error occurred. Please try again later.');
+                    console.error(error);
+                  }
+                }
+              });
+            });
+          } else {
+            activeRequestsTable.innerHTML = `
+              <tr>
+                <td colspan="6" class="py-4 px-4 text-center text-gray-500">
+                  No active blood requests. <a href="/recipients/request" class="text-secondary hover:underline">Create a new request</a>
+                </td>
+              </tr>
+            `;
+          }
+          
+          // Update request history table
+          const completedRequests = requests.filter(req => req.status === 'Fulfilled' || req.status === 'Cancelled');
+          const historyTable = document.getElementById('request-history-table');
+          
+          if (completedRequests.length > 0) {
+            historyTable.innerHTML = '';
+            
+            completedRequests.forEach(request => {
+              const row = document.createElement('tr');
+              
+              const requestDate = new Date(request.createdAt);
+              const formattedDate = requestDate.toLocaleDateString('en-US', {
+                day: 'numeric',
+                month: 'short',
+                year: 'numeric'
+              });
+              
+              const now = new Date();
+              const diffTime = Math.abs(now - requestDate);
+              const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+              let timeAgo;
+              
+              if (diffDays < 30) {
+                timeAgo = diffDays === 0 ? 'Today' : 
+                         diffDays === 1 ? 'Yesterday' : 
+                         `${diffDays} days ago`;
+              } else if (diffDays < 365) {
+                const diffMonths = Math.floor(diffDays / 30);
+                timeAgo = `${diffMonths} month${diffMonths > 1 ? 's' : ''} ago`;
+              } else {
+                const diffYears = Math.floor(diffDays / 365);
+                timeAgo = `${diffYears} year${diffYears > 1 ? 's' : ''} ago`;
+              }
+              
+              row.innerHTML = `
+                <td class="py-4 px-4 whitespace-nowrap">
+                  <div class="text-sm font-medium text-gray-900">${formattedDate}</div>
+                  <div class="text-sm text-gray-500">${timeAgo}</div>
+                </td>
+                <td class="py-4 px-4 whitespace-nowrap">
+                  <div class="text-sm font-medium text-gray-900">${request.bloodGroup}</div>
+                </td>
+                <td class="py-4 px-4 whitespace-nowrap">
+                  <div class="text-sm text-gray-900">${request.unitsRequired} units</div>
+                </td>
+                <td class="py-4 px-4 whitespace-nowrap">
+                  <div class="text-sm text-gray-900">${request.hospital}</div>
+                </td>
+                <td class="py-4 px-4 whitespace-nowrap">
+                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                    request.status === 'Fulfilled' ? 'bg-green-100 text-green-800' :
+                    'bg-red-100 text-red-800'
+                  }">
+                    ${request.status}
+                  </span>
+                </td>
+                <td class="py-4 px-4 whitespace-nowrap text-sm font-medium">
+                  <a href="/recipients/requests/${request.id}" class="text-blue-600 hover:text-blue-900">View</a>
+                </td>
+              `;
+              
+              historyTable.appendChild(row);
+            });
+          } else {
+            historyTable.innerHTML = `
+              <tr>
+                <td colspan="6" class="py-4 px-4 text-center text-gray-500">
+                  No completed blood requests yet.
+                </td>
+              </tr>
+            `;
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching blood requests:', error);
+      }
+    }
+    
+    // Fetch matching donors
+    async function fetchMatchingDonors() {
+      try {
+        const response = await fetch('/api/recipients/matching-donors');
+        const data = await response.json();
+        
+        if (data.success && data.donors.length > 0) {
+          const donorsGrid = document.getElementById('matching-donors-grid');
+          donorsGrid.innerHTML = '';
+          
+          data.donors.forEach(donor => {
+            const donorCard = document.createElement('div');
+            donorCard.className = 'border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow';
+            
+            const nameParts = donor.name.split(' ');
+            const initials = nameParts.length > 1 
+              ? `${nameParts[0][0]}${nameParts[1][0]}`
+              : nameParts[0].substring(0, 2);
+            
+            let lastDonation = 'Never donated';
+            if (donor.lastDonationDate) {
+              const lastDonationDate = new Date(donor.lastDonationDate);
+              const now = new Date();
+              const diffTime = Math.abs(now - lastDonationDate);
+              const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+              
+              if (diffDays < 30) {
+                lastDonation = `${diffDays} days ago`;
+              } else if (diffDays < 365) {
+                const diffMonths = Math.floor(diffDays / 30);
+                lastDonation = `${diffMonths} month${diffMonths > 1 ? 's' : ''} ago`;
+              } else {
+                const diffYears = Math.floor(diffDays / 365);
+                lastDonation = `${diffYears} year${diffYears > 1 ? 's' : ''} ago`;
+              }
+            }
+            
+            donorCard.innerHTML = `
+              <div class="flex items-start">
+                <div class="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mr-4">
+                  ${initials.toUpperCase()}
+                </div>
+                <div>
+                  <h3 class="font-semibold text-lg">${donor.name}</h3>
+                  <p class="text-gray-600">${donor.bloodGroup} Blood Group</p>
+                  <p class="text-gray-600">${donor.city}, ${donor.pinCode}</p>
+                  <p class="text-gray-600">Last Donation: ${lastDonation}</p>
+                  <div class="mt-2">
+                    <a href="tel:${donor.phone}" class="inline-flex items-center text-primary hover:text-red-700">
+                      <i class="fas fa-phone-alt mr-1"></i> Contact
+                    </a>
+                  </div>
+                </div>
+              </div>
+            `;
+            
+            donorsGrid.appendChild(donorCard);
+          });
+        } else {
+          document.getElementById('matching-donors-container').innerHTML = `
+            <div class="text-center py-8">
+              <div class="text-gray-400 text-5xl mb-4">
+                <i class="fas fa-user-slash"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">No Matching Donors Found</h3>
+              <p class="text-gray-600 mb-4">We couldn't find any matching donors in your area at the moment.</p>
+              <a href="/recipients/request" class="bg-secondary text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">
+                Create New Request
+              </a>
+            </div>
+          `;
+        }
+      } catch (error) {
+        console.error('Error fetching matching donors:', error);
+      }
+    }
+    
+    // Initialize dashboard
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchRecipientData();
+      fetchBloodRequests();
+      fetchMatchingDonors();
+    });
+  </script>
+</body>
+</html>
